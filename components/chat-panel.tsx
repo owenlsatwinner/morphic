@@ -12,6 +12,8 @@ import { EmptyScreen } from './empty-screen'
 import Textarea from 'react-textarea-autosize'
 import { nanoid } from 'ai'
 import { useAppState } from '@/lib/utils/app-state'
+import Image from 'next/image'
+import MoreTools from './more-tool'
 
 interface ChatPanelProps {
   messages: UIState
@@ -95,7 +97,7 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
           onClick={() => handleClear()}
         >
           <span className="text-sm mr-2 group-hover:block hidden animate-in fade-in duration-300">
-            New
+            新建话题
           </span>
           <Plus size={18} className="group-hover:rotate-90 transition-all" />
         </Button>
@@ -113,6 +115,10 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
         'fixed bottom-8 left-0 right-0 top-10 mx-auto h-screen flex flex-col items-center justify-center'
       }
     >
+      <h1 className="text-slate-700 font-bold text-2xl mb-12 flex items-center gap-3 dark:text-slate-400">
+        <Image src={'/logo.png'} width="32" height="32" alt="MagickPen logo" />
+        余弦法律：AI全网分析引擎
+      </h1>
       <form onSubmit={handleSubmit} className="max-w-2xl w-full px-6">
         <div className="relative flex items-center w-full">
           <Textarea
@@ -121,7 +127,7 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
             rows={1}
             maxRows={5}
             tabIndex={0}
-            placeholder="Ask a question..."
+            placeholder="我是AI分析引擎，请输入您想查询的问题..."
             spellCheck={false}
             value={input}
             className="resize-none w-full min-h-12 rounded-fill bg-muted border border-input pl-4 pr-10 pt-3 pb-1 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50'"
@@ -183,6 +189,7 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
           className={cn(showEmptyScreen ? 'visible' : 'invisible')}
         />
       </form>
+      <MoreTools />
     </div>
   )
 }
