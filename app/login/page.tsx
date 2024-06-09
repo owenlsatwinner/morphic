@@ -1,10 +1,4 @@
-import { Auth } from '@supabase/auth-ui-react'
 import { redirect } from 'next/navigation'
-import {
-  // Import predefined theme
-  ThemeSupa
-} from '@supabase/auth-ui-shared'
-import Link from 'next/link'
 import { SubmitButton } from './submit-button'
 import { headers } from 'next/headers'
 import { createClient } from '@/utils'
