@@ -14,6 +14,7 @@ import { nanoid } from 'ai'
 import { useAppState } from '@/lib/utils/app-state'
 import Image from 'next/image'
 import MoreTools from './more-tool'
+import { createClient } from '@/utils/supabase/client'
 
 interface ChatPanelProps {
   messages: UIState
@@ -56,6 +57,29 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
+
+    const supabase = createClient()
+    const {
+      data: { user }
+    } = await supabase.auth.getUser()
+    if (!user) {
+      alert('Please login first!')
+      router.push('/login')
+      return
+    }
+    if (user) {
+      await supabase
+        .from('morphic_used')
+        .insert([
+          {
+            user_id: user.id,
+            email: user.email,
+            send_message: input
+          }
+        ])
+        .select()
+    }
+
     await handleQuerySubmit(input, formData)
   }
 
