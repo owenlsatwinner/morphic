@@ -115,7 +115,7 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
         'fixed bottom-8 left-0 right-0 top-10 mx-auto h-screen flex flex-col items-center justify-center'
       }
     >
-      <h1 className="text-slate-700 font-bold text-2xl mb-12 flex items-center gap-3 dark:text-slate-400">
+      <h1 className="animate-in text-slate-700 font-bold text-2xl mb-12 flex items-center gap-3 dark:text-slate-400">
         <Image src={'/logo.png'} width="32" height="32" alt="MagickPen logo" />
         余弦法律：AI全网分析引擎
       </h1>

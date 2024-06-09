@@ -5,7 +5,7 @@ export default function MoreTools() {
   return (
     <div className="text-center w-full">
       <h2 className="text-slate-500">更多智能体</h2>
-      <ul className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4 max-w-2xl mx-auto text-xs">
+      <ul className="animate-in  grid grid-cols-2 md:grid-cols-4 gap-3 mt-4 max-w-2xl mx-auto text-xs">
         <li>
           <Link
             href="https://www.cosine.work/zh"
