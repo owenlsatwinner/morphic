@@ -1,7 +1,7 @@
 import { createStreamableUI, createStreamableValue } from 'ai/rsc'
 import { CoreMessage, ToolCallPart, ToolResultPart, streamText } from 'ai'
 import { getTools } from './tools'
-import { getModel } from '../utils'
+import { getModel, transformToolMessages } from '../utils'
 import { AnswerSection } from '@/components/answer-section'
 import researcherPrompt from '@/prompts/researcher'
 
@@ -13,13 +13,25 @@ export async function researcher(
 ) {
   let fullResponse = ''
   let hasError = false
+
+  // Transform the messages if using Ollama provider
+  let processedMessages = messages
+  const useOllamaProvider = !!(
+    process.env.OLLAMA_MODEL && process.env.OLLAMA_BASE_URL
+  )
+  if (useOllamaProvider) {
+    processedMessages = transformToolMessages(messages)
+  }
+  const includeToolResponses = messages.some(message => message.role === 'tool')
+  const useSubModel = useOllamaProvider && includeToolResponses
+
   const answerSection = <AnswerSection result={streamableText.value} />
   const currentDate = new Date().toLocaleString()
   const result = await streamText({
-    model: getModel(),
+    model: getModel(useSubModel),
     maxTokens: 2500,
     system: researcherPrompt,
-    messages,
+    messages: processedMessages,
     tools: getTools({
       uiStream,
       fullResponse
