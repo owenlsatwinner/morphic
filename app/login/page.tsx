@@ -21,7 +21,9 @@ export default function Login({
     })
 
     if (error) {
-      return redirect('/login?message=用户名或密码错误')
+      return redirect(
+        `/login?message=${encodeURIComponent('用户名或密码错误')}`
+      )
     }
 
     return redirect('/')
@@ -44,7 +46,9 @@ export default function Login({
     })
 
     if (error) {
-      return redirect('/login?message=注册失败，请更换一个邮箱重试')
+      return redirect(
+        `/login?message=${encodeURIComponent('注册失败，请换一个邮箱重试')}`
+      )
     }
 
     return redirect('/')
