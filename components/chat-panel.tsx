@@ -57,6 +57,7 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
+    await handleQuerySubmit(input, formData)
 
     const supabase = createClient()
     const {
@@ -79,8 +80,6 @@ export function ChatPanel({ messages, query }: ChatPanelProps) {
         ])
         .select()
     }
-
-    await handleQuerySubmit(input, formData)
   }
 
   // if query is not empty, submit the query
