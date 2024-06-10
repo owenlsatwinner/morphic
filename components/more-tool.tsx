@@ -16,7 +16,7 @@ export default function MoreTools() {
                text-slate-400  border border-slate-300/30 transition-all hover:bg-white/50 hover:backdrop-blur-md py-2.5 rounded-md block"
           >
             <Image
-              src={'/ReviewGPT.png'}
+              src={'/review.jpg'}
               width={100}
               height="20"
               className="w-full mb-1 h-5 object-contain"
@@ -36,7 +36,7 @@ export default function MoreTools() {
                text-slate-400  border border-slate-300/30 transition-all hover:bg-white/50 hover:backdrop-blur-md py-2.5 rounded-md block"
           >
             <Image
-              src={'/MagickPen.png'}
+              src={'/draft.jpg'}
               width={100}
               height="20"
               className="w-full mb-1 h-5 object-contain"
@@ -55,7 +55,7 @@ export default function MoreTools() {
                text-slate-400  border border-slate-300/30 transition-all hover:bg-white/50 hover:backdrop-blur-md py-2.5 rounded-md block"
           >
             <Image
-              src={'/MagickPen.png'}
+              src={'/legal.jpg'}
               width={100}
               height="20"
               className="w-full mb-1 h-5 object-contain"

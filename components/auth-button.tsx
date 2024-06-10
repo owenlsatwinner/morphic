@@ -18,21 +18,21 @@ export default async function AuthButton() {
   }
 
   return user ? (
-    <div className="text-sm flex items-center gap-2">
+    <div className="text-sm flex items-center gap-2 w-full">
       {user.email}
       <form action={signOut}>
         <Button variant="ghost" size="icon" className="">
-          Logout
+          登出
         </Button>
       </form>
     </div>
   ) : (
-    <Button variant="ghost" size="icon" className="">
+    <Button variant="ghost" size="icon" className="w-full">
       <Link
         href="/login"
-        className="py-2 px-2 text-sm flex rounded-md no-underline bg-btn-background hover:bg-btn-background-hover"
+        className="py-4 px-2 text-sm flex rounded-md no-underline bg-btn-background hover:bg-btn-background-hover"
       >
-        Login
+        注册/登录
       </Link>
     </Button>
   )
