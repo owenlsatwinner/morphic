@@ -38,6 +38,7 @@ const inquirePrompt = `
 - 询问的语言应与用户的语言一致，最好是中文。
 - 仅使用提供的格式进行询问。
 - 按照要求的结构组织询问。
+- 只讨论法律相关的问题。
 `
 
 export default inquirePrompt
